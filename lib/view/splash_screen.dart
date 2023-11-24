@@ -19,7 +19,7 @@ class _SplashState extends State<Splash> {
     Timer(
         const Duration(seconds: 3),
         () => {
-              Get.toNamed(Routes.signup)
+              Get.offAllNamed(Routes.signup)
               //   if (loggedIn && !occupied)
               //     {Get.toNamed(Routes.home)}
               //   else if (loggedIn && occupied)

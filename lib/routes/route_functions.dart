@@ -8,6 +8,7 @@ class RoutingFunctions {
     String userName,
     String email,
     String password,
+    String role,
   ) async {
     FocusScope.of(context).unfocus();
     if (formKey.currentState!.validate()) {
@@ -15,12 +16,12 @@ class RoutingFunctions {
       // await AuthFunctions().userSignUp(
       //     userName, firstName, lastName, email, password, dateOfBirth, branch);
       if (response != null) {
-        Get.showSnackbar(GetSnackBar(
-          title: 'Sign Up Successfull',
-        ));
+        Get.snackbar("Success", "Sign Up Successful",
+            snackPosition: SnackPosition.BOTTOM);
         Get.offAllNamed('/login');
       } else {
-        Get.showSnackbar(GetSnackBar(title: 'Invalid Values'));
+        Get.snackbar("Error", "Invalid Values",
+            snackPosition: SnackPosition.BOTTOM);
       }
     }
   }

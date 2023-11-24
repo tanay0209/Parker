@@ -18,6 +18,9 @@ class _SignupState extends State<Signup> {
   void dispose() {
     super.dispose();
     emailController.dispose();
+    passwordController.dispose();
+    usernameController.dispose();
+    confirmPasswordController.dispose();
   }
 
   TextEditingController emailController = TextEditingController();
@@ -41,115 +44,140 @@ class _SignupState extends State<Signup> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.all(12),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text(
-              'Create an account',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w600,
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: Container(
+          margin: const EdgeInsets.all(12),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Create an account',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(
-              'Parking made easy!',
-              style: TextStyle(
-                  fontWeight: FontWeight.w400, color: Colors.grey.shade500),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  InputField(
-                    label: 'Username',
-                    hintText: 'Enter your username',
-                    hidden: false,
-                    controller: emailController,
-                    validatorFunction: signupValidation.emptyFieldValidator,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  InputField(
-                    label: 'Email Address',
-                    hintText: 'Enter your email',
-                    hidden: false,
-                    controller: emailController,
-                    validatorFunction: signupValidation.emailValidator,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  InputField(
-                    label: 'Password',
-                    hintText: 'Please enter your password',
-                    hidden: true,
-                    controller: passwordController,
-                    validatorFunction: signupValidation.passwordValidator,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  InputField(
-                    label: 'Confirm Password',
-                    hintText: 'Re-enter your password',
-                    hidden: true,
-                    controller: confirmPasswordController,
-                    validatorFunction: signupValidation.passwordValidator,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  SizedBox(
-                    width: width! / 4,
-                    child: DropdownButton<String>(
-                      padding: const EdgeInsets.all(6),
-                      value: dropdownValue,
-                      alignment: AlignmentDirectional.center,
-                      icon: const Icon(Icons.arrow_downward),
-                      elevation: 16,
-                      style: const TextStyle(
-                        color: Colors.deepPurple,
-                      ),
-                      onChanged: (String? value) {
-                        setState(() {
-                          dropdownValue = value!;
-                        });
-                      },
-                      items:
-                          options.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                'Parking made easy!',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400, color: Colors.grey.shade500),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    InputField(
+                      label: 'Username',
+                      hintText: 'Enter your username',
+                      hidden: false,
+                      controller: usernameController,
+                      validatorFunction: signupValidation.emptyFieldValidator,
                     ),
-                  )
-                ],
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InputField(
+                      label: 'Email Address',
+                      hintText: 'Enter your email',
+                      hidden: false,
+                      controller: emailController,
+                      validatorFunction: signupValidation.emailValidator,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InputField(
+                      label: 'Password',
+                      hintText: 'Please enter your password',
+                      hidden: true,
+                      controller: passwordController,
+                      validatorFunction: signupValidation.passwordValidator,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    InputField(
+                      label: 'Confirm Password',
+                      hintText: 'Re-enter your password',
+                      hidden: true,
+                      controller: confirmPasswordController,
+                      validatorFunction: signupValidation.passwordValidator,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      width: width! / 4,
+                      child: DropdownButton<String>(
+                        padding: const EdgeInsets.all(6),
+                        value: dropdownValue,
+                        alignment: AlignmentDirectional.center,
+                        icon: const Icon(Icons.arrow_downward),
+                        elevation: 16,
+                        style: const TextStyle(
+                          color: Colors.deepPurple,
+                        ),
+                        onChanged: (String? value) {
+                          setState(() {
+                            dropdownValue = value!;
+                          });
+                        },
+                        items: options
+                            .map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            PrimaryButton(
-              text: 'Sign Up',
-              onTap: () => routeFunctions.goToLoginPage(
+              const SizedBox(
+                height: 10,
+              ),
+              PrimaryButton(
+                text: 'Sign Up',
+                onTap: () => routeFunctions.goToLoginPage(
                   context,
                   _formKey,
                   usernameController.text,
                   emailController.text,
-                  passwordController.text),
-            )
-          ],
+                  passwordController.text,
+                  dropdownValue,
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Already have an account?',
+                    style: TextStyle(color: Colors.grey.shade500),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Get.offAllNamed('/login');
+                    },
+                    child: const Text(
+                      'Log In',
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

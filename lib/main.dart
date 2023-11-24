@@ -25,7 +25,7 @@ class Parker extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: getPages,
-      initialRoute: '/',
+      initialRoute: '/payment',
     );
   }
 }
