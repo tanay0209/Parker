@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:parker/view/splash_screen.dart';
+import 'package:parker/common/constants.dart';
+import 'package:parker/routes/routes.dart';
 import 'package:get/get.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const Parker());
+  runApp(
+    const Parker(),
+  );
 }
 
 class Parker extends StatelessWidget {
@@ -12,8 +15,12 @@ class Parker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      home: SplashScreen(),
+    width = MediaQuery.of(context).size.width;
+    height = MediaQuery.of(context).size.height;
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      getPages: getPages,
+      initialRoute: '/',
     );
   }
 }
