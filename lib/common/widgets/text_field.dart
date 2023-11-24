@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:parker/common/colors.dart';
 
-class TextField extends StatelessWidget {
+class InputField extends StatelessWidget {
   final String label;
   final String hintText;
   final bool hidden;
   final TextEditingController controller;
   final String? Function(String?) validatorFunction;
-  const TextField(
+  const InputField(
       {super.key,
       required this.label,
       required this.hintText,
@@ -18,35 +19,28 @@ class TextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       child: TextFormField(
-        // style: TextStyle(color: Styles.tertiaryColor),
-        // cursorColor: Styles.tertiaryColor,
+        style: TextStyle(color: ColorStyles.primaryColor),
+        cursorColor: ColorStyles.primaryColor,
         validator: validatorFunction,
-
         controller: controller,
         obscureText: hidden,
         decoration: InputDecoration(
+          enabledBorder: const OutlineInputBorder(),
+          focusedBorder: const OutlineInputBorder(),
           contentPadding: const EdgeInsets.fromLTRB(
             10,
             12,
             10,
             8,
           ),
-          errorStyle: TextStyle(
-              // backgroundColor: Styles.transparent,
-              ),
-          filled: true,
           label: Text(label),
-          // fillColor: Styles.inputBoxColor,
           border: const OutlineInputBorder(
             borderRadius: BorderRadius.all(
-              Radius.circular(8),
+              Radius.circular(10),
             ),
             borderSide: BorderSide.none,
           ),
           hintText: hintText,
-          hintStyle: TextStyle(
-              // color: Styles.tertiaryColor,
-              ),
         ),
       ),
     );
