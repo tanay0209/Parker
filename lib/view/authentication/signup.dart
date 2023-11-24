@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:parker/common/constants.dart';
 import 'package:parker/common/widgets/primary_button.dart';
 import 'package:parker/common/widgets/text_field.dart';
 import 'package:parker/controllers/validation/signup_validation.dart';
+import 'package:parker/routes/route_functions.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -21,10 +23,21 @@ class _SignupState extends State<Signup> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
   SignupValidation signupValidation = SignupValidation();
   final _formKey = GlobalKey<FormState>();
   List<String> options = <String>['User', 'Owner'];
   late String dropdownValue = options[0];
+  RoutingFunctions routeFunctions = RoutingFunctions();
+
+  String? confirmPasswordValidator(String? value) {
+    if (value!.isEmpty || value != passwordController.text) {
+      return 'Password does not match';
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +99,17 @@ class _SignupState extends State<Signup> {
                   const SizedBox(
                     height: 15,
                   ),
-                  Container(
+                  InputField(
+                    label: 'Confirm Password',
+                    hintText: 'Re-enter your password',
+                    hidden: true,
+                    controller: confirmPasswordController,
+                    validatorFunction: signupValidation.passwordValidator,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
                     width: width! / 4,
                     child: DropdownButton<String>(
                       padding: const EdgeInsets.all(6),
@@ -97,12 +120,7 @@ class _SignupState extends State<Signup> {
                       style: const TextStyle(
                         color: Colors.deepPurple,
                       ),
-                      // underline: Container(
-                      //   height: 2,
-                      //   color: Colors.deepPurpleAccent,
-                      // ),
                       onChanged: (String? value) {
-                        // This is called when the user selects an item.
                         setState(() {
                           dropdownValue = value!;
                         });
@@ -122,7 +140,15 @@ class _SignupState extends State<Signup> {
             const SizedBox(
               height: 10,
             ),
-            const PrimaryButton(text: 'Sign Up')
+            PrimaryButton(
+              text: 'Sign Up',
+              onTap: () => routeFunctions.goToLoginPage(
+                  context,
+                  _formKey,
+                  usernameController.text,
+                  emailController.text,
+                  passwordController.text),
+            )
           ],
         ),
       ),

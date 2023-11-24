@@ -27,6 +27,7 @@ class InputField extends StatelessWidget {
         decoration: InputDecoration(
           enabledBorder: const OutlineInputBorder(),
           focusedBorder: const OutlineInputBorder(),
+          errorBorder: const OutlineInputBorder(),
           contentPadding: const EdgeInsets.fromLTRB(
             10,
             12,
