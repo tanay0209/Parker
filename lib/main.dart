@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:parker/common/constants.dart';
 import 'package:parker/routes/routes.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:get/get.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // SharedPreferences preferences = await SharedPreferences.getInstance();
+  // loggedIn = preferences.getBool("loggedIn");
+  // occupied = preferences.getBool('occupied');
+
   runApp(
     const Parker(),
   );

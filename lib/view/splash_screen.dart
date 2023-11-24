@@ -1,18 +1,48 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:parker/common/colors.dart';
+import 'package:parker/common/constants.dart';
+import 'package:parker/routes/routes.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class Splash extends StatefulWidget {
+  const Splash({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<Splash> createState() => _SplashState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    Timer(
+        const Duration(seconds: 3),
+        () => {
+              //   if (loggedIn && !occupied)
+              //     {Get.toNamed(Routes.home)}
+              //   else if (loggedIn && occupied)
+              //     {Get.toNamed(Routes.map)}
+              //   else
+              //     {
+              //       {Get.toNamed(Routes.login)}
+              //     }
+            });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorStyles.white,
       body: Center(
-        child: Text('SplashScreen'),
+        child: Text(
+          'Park-Ker',
+          style: TextStyle(
+            color: ColorStyles.secondaryColor,
+            fontSize: 48,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }
