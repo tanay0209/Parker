@@ -14,6 +14,7 @@ class Routes {
   static String signup = '/signup';
   static String home = '/home';
   static String map = '/map';
+  static String bookSlot = '/bookslot';
   static String payment = '/payment';
   static String paymentProcessing = '/processingpayment';
   static String paymentSuccessful = '/paymentsuccessful';
@@ -60,8 +61,4 @@ final getPages = [
     page: () => const PaymentSuccessful(),
     transition: Transition.rightToLeft,
   ),
-  // GetPage(
-  //   name: Routes.map,
-  //   page: () => const Map(),
-  // ),
 ];

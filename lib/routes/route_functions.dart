@@ -48,4 +48,8 @@ class RoutingFunctions {
       }
     }
   }
+
+  goToBookSlot() {
+    Get.toNamed('/bookslot');
+  }
 }
