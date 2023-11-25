@@ -29,7 +29,7 @@ class _SignupState extends State<Signup> {
   TextEditingController confirmPasswordController = TextEditingController();
   SignupValidation signupValidation = SignupValidation();
   final _formKey = GlobalKey<FormState>();
-  List<String> options = <String>['User', 'Owner'];
+  List<String> options = <String>['USER', 'OWNER'];
   late String dropdownValue = options[0];
   RoutingFunctions routeFunctions = RoutingFunctions();
 

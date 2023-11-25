@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:parker/common/constants.dart';
 import 'package:parker/common/widgets/primary_button.dart';
 import 'package:parker/common/widgets/text_field.dart';
 import 'package:parker/controllers/validation/signup_validation.dart';

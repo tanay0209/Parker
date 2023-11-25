@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:parker/view/application/book_slot.dart';
 import 'package:parker/view/application/home.dart';
 import 'package:parker/view/authentication/login.dart';
 import 'package:parker/view/authentication/signup.dart';
@@ -39,6 +40,11 @@ final getPages = [
   GetPage(
     name: Routes.home,
     page: () => const Home(),
+    transition: Transition.rightToLeft,
+  ),
+  GetPage(
+    name: Routes.bookSlot,
+    page: () => const BookSlot(),
     transition: Transition.rightToLeft,
   ),
   GetPage(

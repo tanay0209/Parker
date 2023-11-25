@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:parker/controllers/auth/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RoutingFunctions {
@@ -13,9 +14,12 @@ class RoutingFunctions {
   ) async {
     FocusScope.of(context).unfocus();
     if (formKey.currentState!.validate()) {
-      dynamic response = false;
-      // await AuthFunctions().userSignUp(
-      //     userName, firstName, lastName, email, password, dateOfBirth, branch);
+      dynamic response = await AuthFunctions().userSignUp(
+        userName,
+        email,
+        password,
+        role,
+      );
       if (response != null) {
         Get.snackbar("Success", "Sign Up Successful",
             snackPosition: SnackPosition.BOTTOM);
@@ -31,8 +35,8 @@ class RoutingFunctions {
       String userName, String password) async {
     FocusScope.of(context).unfocus();
     if (formKey.currentState!.validate()) {
-      dynamic response = true;
-      // await AuthFunctions().loginAuthentication(userName, password);
+      dynamic response =
+          await AuthFunctions().loginAuthentication(userName, password);
       if (response != null) {
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setBool("loggedIn", true);
