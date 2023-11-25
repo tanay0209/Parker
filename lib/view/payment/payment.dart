@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:parker/common/colors.dart';
 import 'package:parker/common/constants.dart';
 import 'package:parker/common/widgets/primary_button.dart';
-import 'package:parker/common/widgets/secondary_butto.dart';
+import 'package:parker/common/widgets/secondary_button.dart';
 
 class Payment extends StatelessWidget {
   const Payment({super.key});

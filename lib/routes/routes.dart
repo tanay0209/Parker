@@ -23,34 +23,42 @@ final getPages = [
   GetPage(
     name: Routes.splash,
     page: () => const Splash(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.login,
     page: () => const Login(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.signup,
     page: () => const Signup(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.home,
     page: () => const Home(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.map,
     page: () => const Map(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.payment,
     page: () => const Payment(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.paymentProcessing,
     page: () => const PaymentProcessing(),
+    transition: Transition.rightToLeft,
   ),
   GetPage(
     name: Routes.paymentSuccessful,
     page: () => const PaymentSuccessful(),
+    transition: Transition.rightToLeft,
   ),
   // GetPage(
   //   name: Routes.map,

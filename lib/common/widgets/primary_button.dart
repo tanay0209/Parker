@@ -13,8 +13,9 @@ class PrimaryButton extends StatelessWidget {
     return SizedBox(
       width: width,
       child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(ColorStyles.primaryColor),
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          backgroundColor: ColorStyles.primaryColor,
         ),
         onPressed: onTap,
         child: Text(

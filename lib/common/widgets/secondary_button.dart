@@ -14,14 +14,13 @@ class SecondaryButton extends StatelessWidget {
       width: width,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(
-                  8,
-                ),
-              ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              8.0,
             ),
-            backgroundColor: ColorStyles.secondaryColor),
+          ),
+          backgroundColor: ColorStyles.secondaryColor,
+        ),
         onPressed: onTap,
         child: Text(
           text,
